@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import UserCreate from "./components/UserCreate";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { language: "english" };
+
+  onLanguageChange = (language) => {
+    this.setState({ language });
+  };
+
+  render() {
+    return (
+      <div className="ui container">
+        <div>
+          Select a Language:{" "}
+          <i
+            className="flag us"
+            onClick={() => this.onLanguageChange("english")}
+          />
+          <i
+            className="flag nl"
+            onClick={() => this.onLanguageChange("dutch")}
+          />
+        </div>
+        <UserCreate />
+      </div>
+    );
+  }
 }
 
 export default App;
